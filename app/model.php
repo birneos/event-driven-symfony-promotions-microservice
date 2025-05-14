@@ -5,16 +5,8 @@ use App\CDP\Analytics\Model\ModelInterface;
 /* identify Model should look like this when sent */
 $identiModel = new class implements ModelInterface
 {
-  public function getId()
-  {
-      return;
-  }
 
-  public function fromArray(array $data): void
-  {
-      // Implement fromArray method if needed
-  }
-  
+
   public function toArray(): array
   {
       return [
