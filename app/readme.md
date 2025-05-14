@@ -15,3 +15,9 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 - benutzerdefinierten Http-Client erstellt, zum Testen (senden) von Identifkations- und Trackdaten
 - PHP Unit konfiguriert und mit WebhookControllerTest den ersten Test geschrieben, mit KernelBrowser (simuliert einen Browser) alternativ zu Postman
 - Webhook DTO erstellt, darin wird der Eventname und der Payload gemappt
+- WebhookController, Serializer umd raw Daten auf ein Webhook Dto zu mappen
+
+- WebhookHandlerInterface als Vorlage für unterschiedliche Handler (supports)
+   - support() - Prüft ob dieser Handler, den erhaltenen Webhook handeln kann
+   - handle()  - tut was es tun muss, um die richtigen Daten an die Kundenplattform weiterzuleiten
+- NewsletterHandler der supports (prüft auf gültigen Event) und handle implementiert hat
