@@ -15,6 +15,7 @@ class WebhooksController extends AbstractController
 {
     public function __construct(
         private readonly SerializerInterface $serializer,
+        private readonly \App\Handler\HandlerDelegator $handlerDelegator,
     ) {
     }
 
@@ -33,7 +34,8 @@ class WebhooksController extends AbstractController
 
             $webhook->setRawPayload(json_decode($request->getContent(), true));
 
-            dd($webhook);
+            $this->handlerDelegator->delegate($webhook);
+           
 
             return new Response(status: 204);
         } catch (\Throwable $exception) {

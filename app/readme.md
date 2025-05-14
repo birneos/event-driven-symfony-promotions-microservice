@@ -21,3 +21,7 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
    - support() - Prüft ob dieser Handler, den erhaltenen Webhook handeln kann
    - handle()  - tut was es tun muss, um die richtigen Daten an die Kundenplattform weiterzuleiten
 - NewsletterHandler der supports (prüft auf gültigen Event) und handle implementiert hat
+- service.yaml, wir registrieren das WebhookHandlerInterface als Tag, um es mit dem #AutoWireIterator einfacher
+  durchlaufen zu können
+- HandlerDelegator Klasse erstellt, WebhooksController mappt Daten auf Webhook DTO und ruft dann den
+  Delegator auf der alle Handler iteriert mit #AutoWireIterator['webhook.handler'] und prüft ob supports Webhook Event unterstüzt und wenn ja, weiter verarbeitet über handle()
