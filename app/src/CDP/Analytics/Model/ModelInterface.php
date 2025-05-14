@@ -11,14 +11,14 @@ interface ModelInterface
    *
    * @return mixed
    */
-  public function getId();
+    public function getId();
 
   /**
    * Convert the model to an array representation.
    *
    * @return array
    */
-  public function toArray(): array;
+    public function toArray(): array;
 
   /**
    * Populate the model with data from an array.
@@ -26,5 +26,5 @@ interface ModelInterface
    * @param array $data
    * @return void
    */
-  public function fromArray(array $data): void;
+    public function fromArray(array $data): void;
 }

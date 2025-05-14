@@ -10,39 +10,39 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WebhooksControllerTest extends WebTestCase
 {
-  private KernelBrowser $webTester;
+    private KernelBrowser $webTester;
 
-  protected function setUp(): void
-  {
-      $this->webTester = static::createClient();
-  }
+    protected function setUp(): void
+    {
+        $this->webTester = static::createClient();
+    }
 
-  public function testWebhooksAreHandled(): void
-  {
-      $incomingWebhookPayload = '{"event":"newsletter_subscribed","id":"12345","origin":"www","timestamp":"2024-12-12T12:00:00Z","user": {"client_id":"4a2b342d-6235-46a9-bc95-6e889b8e5de1","email":"email@example.com","region":"EU"},"newsletter": {"newsletter_id":"newsletter-001","topic":"N/A","product_id":"TechGadget-3000X"}}';
+    public function testWebhooksAreHandled(): void
+    {
+        $incomingWebhookPayload = '{"event":"newsletter_subscribed","id":"12345","origin":"www","timestamp":"2024-12-12T12:00:00Z","user": {"client_id":"4a2b342d-6235-46a9-bc95-6e889b8e5de1","email":"email@example.com","region":"EU"},"newsletter": {"newsletter_id":"newsletter-001","topic":"N/A","product_id":"TechGadget-3000X"}}';
 
-      $this->webTester->request(
-          method: 'POST',
-          uri: '/webhook',
-          server: [
+        $this->webTester->request(
+            method: 'POST',
+            uri: '/webhook',
+            server: [
               'CONTENT_TYPE' => 'application/json',
               'HTTP_ACCEPT' => '*/*',
-          ],
-          content: $incomingWebhookPayload
-      );
+            ],
+            content: $incomingWebhookPayload
+        );
 
-      // Assert CdpClient::identify() called once
+        // Assert CdpClient::identify() called once
 
-      // Assert correct IdentifyModel is passed to CdpClient::identify() method
+        // Assert correct IdentifyModel is passed to CdpClient::identify() method
 
-      // Assert IdentifyModel::toArray() organizes data into format expected by CDP
+        // Assert IdentifyModel::toArray() organizes data into format expected by CDP
 
-      // Assert CdpClient::track() called once
+        // Assert CdpClient::track() called once
 
-      // Assert correct TrackModel is passed to CdpClient::track() method
+        // Assert correct TrackModel is passed to CdpClient::track() method
 
-      // Assert TrackModel::toArray() organizes data into format expected by CDP
+        // Assert TrackModel::toArray() organizes data into format expected by CDP
 
-      $this->assertSame(Response::HTTP_NO_CONTENT, $this->webTester->getResponse()->getStatusCode());
-  }
+        $this->assertSame(Response::HTTP_NO_CONTENT, $this->webTester->getResponse()->getStatusCode());
+    }
 }

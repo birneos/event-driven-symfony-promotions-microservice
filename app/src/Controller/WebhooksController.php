@@ -13,33 +13,31 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class WebhooksController extends AbstractController
 {
-  public function __construct(
-    private readonly SerializerInterface $serializer,
-
-  ) {}
-
-  #[Route(path: '/webhook', name: 'webhook', methods: ['POST'])]
-  public function __invoke(Request $request): Response
-  {
-
-    // Handle the webhook request
-    // You can use $this->cdpClient to send data to the CDP
-    try {
-      $webhook = $this->serializer->deserialize(
-        $request->getContent(),
-        
-        Webhook::class,
-        'json'
-      );
-
-      $webhook->setRawPayload(json_decode($request->getContent(), true));
-
-      dd($webhook);
-
-      return new Response(status: 204);
-    } catch (\Throwable $exception) {
-
-      throw $exception;
+    public function __construct(
+        private readonly SerializerInterface $serializer,
+    ) {
     }
-  }
+
+    #[Route(path: '/webhook', name: 'webhook', methods: ['POST'])]
+    public function __invoke(Request $request): Response
+    {
+
+      // Handle the webhook request
+      // You can use $this->cdpClient to send data to the CDP
+        try {
+            $webhook = $this->serializer->deserialize(
+                $request->getContent(),
+                Webhook::class,
+                'json'
+            );
+
+            $webhook->setRawPayload(json_decode($request->getContent(), true));
+
+            dd($webhook);
+
+            return new Response(status: 204);
+        } catch (\Throwable $exception) {
+            throw $exception;
+        }
+    }
 }
