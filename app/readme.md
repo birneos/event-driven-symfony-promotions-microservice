@@ -13,3 +13,5 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 ## JOURNAL
 - ModelInterface erstellt und 2 anonyme Model-Klassen die ein identify und track Array zurückliefern (DEMODATEN)
 - benutzerdefinierten Http-Client erstellt, zum Testen (senden) von Identifkations- und Trackdaten
+- PHP Unit konfiguriert und mit WebhookControllerTest den ersten Test geschrieben, mit KernelBrowser (simuliert einen Browser) alternativ zu Postman
+- Webhook DTO erstellt, darin wird der Eventname und der Payload gemappt
