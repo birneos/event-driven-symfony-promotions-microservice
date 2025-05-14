@@ -25,3 +25,4 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
   durchlaufen zu können
 - HandlerDelegator Klasse erstellt, WebhooksController mappt Daten auf Webhook DTO und ruft dann den
   Delegator auf der alle Handler iteriert mit #AutoWireIterator['webhook.handler'] und prüft ob supports Webhook Event unterstüzt und wenn ja, weiter verarbeitet über handle()
+- NewsletterWebhook erstellt, sowie Newsletter DTO und User DTO die für das mappen genutzt werden
