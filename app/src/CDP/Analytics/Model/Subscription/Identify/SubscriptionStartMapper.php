@@ -4,19 +4,24 @@ declare(strict_types=1);
 
 namespace App\CDP\Analytics\Model\Subscription\Identify;
 
+use App\Error\WebhookException;
+use Throwable;
+
 class SubscriptionStartMapper
 {
     public function map(SubscriptionSourceInterface $source, IdentifyModel $target): IdentifyModel
     {
+        try {
+            $target->setProduct($source->getProduct());
+            $target->setEventDate($source->getEventDate());
+            $target->setSubscriptionId($source->getSubscriptionId());
+            $target->setEmail($source->getEmail());
+            $target->setId($source->getUserId());
 
-        dd($source, $target);
-        // $model = new IdentifyModel();
-        // $model->setProduct($data['product_id']);
-        // $model->setEventDate($data['timestamp']);
-        // $model->setSubscriptionId($data['id']);
-        // $model->setEmail($data['user']['email']);
-        // $model->setId($data['user']['client_id']);
-
-        return $model;
+            return $target;
+        } catch (Throwable $throwable) {
+            $className = get_class($source);
+            throw new WebhookException("Could not map $className to IdentifyModel target");
+        }
     }
 }
