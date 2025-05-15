@@ -16,14 +16,14 @@ interface ModelInterface
   /**
    * Convert the model to an array representation.
    *
-   * @return array
+   * @return array<string, mixed>
    */
     public function toArray(): array;
 
   /**
    * Populate the model with data from an array.
    *
-   * @param array $data
+   * @param array<string, mixed> $data
    * @return void
    */
     public function fromArray(array $data): void;

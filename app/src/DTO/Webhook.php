@@ -7,6 +7,10 @@ namespace App\DTO;
 class Webhook
 {
     private string $event;
+
+    /**
+     * @var array<string, mixed>
+     */
     private array $rawPayload;
 
     public function getEvent(): string
@@ -19,11 +23,15 @@ class Webhook
         $this->event = $event;
     }
 
+    /** @return array <string, mixed> */
     public function getRawPayload(): array
     {
         return $this->rawPayload;
     }
 
+      /**
+     * @param array<string, mixed> $rawPayload
+     */
     public function setRawPayload(array $rawPayload): void
     {
         $this->rawPayload = $rawPayload;
