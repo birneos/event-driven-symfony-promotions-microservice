@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Forwarder\Identify;
 
+use App\CDP\Analytics\Model\Subscription\Identify\IdentifyModel;
+use App\CDP\Analytics\Model\Subscription\Identify\SubscriptionStartMapper;
 use App\DTO\Newsletter\NewsletterWebhook;
 use App\Forwarder\Newsletter\ForwarderInterface as NewsletterForwarderInterface;
 
 class SubscriptionStartForwarder implements NewsletterForwarderInterface
 {
-    private const SUPPORTED_EVENT = 'subscription_subscribed';
+    private const SUPPORTED_EVENT = 'newsletter_subscribed';
 
     public function supports(NewsletterWebhook $webhook): bool
     {
@@ -23,11 +25,15 @@ class SubscriptionStartForwarder implements NewsletterForwarderInterface
        // $payload = $webhook->getRawPayload();
         // Forward the payload to the desired endpoint or service.
 
-        dd($webhook);
+
 
          //1.  Instantiate a class which models Identify data
 
+         $identifyModel = new IdentifyModel();
+
         // 2.  Map the NewsletterWebhook data to the model
+
+        (new SubscriptionStartMapper())->map($webhook, $identifyModel);
 
         // 3.  Validate the model
 
