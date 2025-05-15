@@ -3,7 +3,7 @@ Event Driven Microservice
 ### GITHUB add Token to push branch
 
 Github.com -> Settings -> Developer Settings -> Personal acces tokens -> Generate new token
-git remote add origin https://<token>@github.com/birneos/microservice_sf7.git
+git remote add origin https://<token>@github.com/birneos/event-driven-symfony-promotions-microservice.git
 git push -u origin main
 
 git checkout -b project-start
