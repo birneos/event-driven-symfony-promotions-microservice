@@ -29,5 +29,5 @@ services:
     _instanceof:
         App\Handler\WebhookHandlerInterface:
             tags: [ 'webhook.handler' ]
-        App\Forwarder\ForwarderInterface:
+        App\Forwarder\Newsletter\ForwarderInterface:
             tags: [ 'forwarder.newsletter' ]
