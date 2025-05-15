@@ -21,8 +21,8 @@ class NewsletterWebhookFactory
                 NewsletterWebhook::class,
                 'json'
             );
-        } catch (\Throwable $exception) {
-            throw new \RuntimeException('Failed to deserialize webhook payload', 0, $exception);
+        } catch (\Throwable $throwable) {
+            throw new \App\Error\WebhookException('Unable to create NewsletterWebhook, failed to deserialize webhook payload #message ' . $throwable->getMessage(), 0, $throwable);
         }
 
         return $newsletterWebhook;
