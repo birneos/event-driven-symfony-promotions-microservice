@@ -32,6 +32,8 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 - PHPStan hatte angekreidet das für #[AutowireIterator] die /** @param */ fehlten
 - SubscriptionStartForwarder erstellt, implementiert das ForwarderInterface das prüft ob der Webhook das passende Event hat und leitet
   dann die Daten weiter - Model erstellen und validieren, bevor wir es weiterleiten
+- Identify Model Object erstellt und ModelInterface um die Konstanten Identify und Track ergänzt, Model wird dazu genutzt um das NewsletterWebhook zu füllen
+
 
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
@@ -39,4 +41,4 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
   docker compose exec app vendor/bin/phpunit
   docker compose exec app vendor/bin/phpcs
 
-  
+
