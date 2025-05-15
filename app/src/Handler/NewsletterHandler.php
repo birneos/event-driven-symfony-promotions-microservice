@@ -6,6 +6,7 @@ namespace App\Handler;
 
 use App\DTO\Newsletter\Factory\NewsletterWebhookFactory;
 use App\DTO\Webhook;
+use App\Forwarder\Newsletter\ForwarderInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
 class NewsletterHandler implements WebhookHandlerInterface

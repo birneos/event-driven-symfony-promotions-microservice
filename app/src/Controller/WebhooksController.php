@@ -34,7 +34,7 @@ class WebhooksController extends AbstractController
 
             /**
              * @var Webhook $webhook
-             * 
+             *
              */
             $webhook->setRawPayload(json_decode($request->getContent(), true));
 

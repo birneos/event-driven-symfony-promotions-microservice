@@ -30,3 +30,13 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 - WebhookException erstellt, für eigene Fehlerbehandlung
 - ForwarderInterface erstellt (supports, forward), prüft auf gültige Events die dann bspw. ans Kundensystem (CDP) weitergeleitet werden
 - PHPStan hatte angekreidet das für #[AutowireIterator] die /** @param */ fehlten
+- SubscriptionStartForwarder erstellt, implementiert das ForwarderInterface das prüft ob der Webhook das passende Event hat und leitet
+  dann die Daten weiter - Model erstellen und validieren, bevor wir es weiterleiten
+
+  Zwischendurch mal Codeoptimierungen machen:
+  docker compose exec app vendor/bin/phpstan
+  docker compose exec app vendor/bin/phpcbf 
+  docker compose exec app vendor/bin/phpunit
+  docker compose exec app vendor/bin/phpcs
+
+  
