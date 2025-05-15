@@ -6,11 +6,16 @@ namespace App\Handler;
 
 use App\DTO\Newsletter\Factory\NewsletterWebhookFactory;
 use App\DTO\Webhook;
+use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
 class NewsletterHandler implements WebhookHandlerInterface
 {
+    /**
+     *  @param iterable<ForwarderInterface> $forwarders
+     * */
     public function __construct(
         private readonly NewsletterWebhookFactory $newsletterWebhookFactory,
+        #[AutowireIterator(tag: 'forwarder.newsletter')] private readonly iterable $forwarders
     ) {
     }
     private const SUPPORTED_EVENTS = [
@@ -28,6 +33,13 @@ class NewsletterHandler implements WebhookHandlerInterface
     {
         $newsletterWebhook = $this->newsletterWebhookFactory->create($webhook);
 
-        dd($newsletterWebhook);
+        // Loop through all the forwarders and check if they support the webhook
+        foreach ($this->forwarders as $forwarder) {
+            // Check if the forwarder supports the webhook
+            if ($forwarder->supports($newsletterWebhook)) {
+                // Forward the data
+                $forwarder->forward($newsletterWebhook);
+            }
+        }
     }
 }

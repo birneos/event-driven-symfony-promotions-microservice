@@ -28,3 +28,5 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 - NewsletterWebhook erstellt, sowie Newsletter DTO und User DTO die für das mappen genutzt werden
 - NewsletterWebhookFactory erstellt, deserialisiert ankommenden Webhook und mappt ihn auf das            NewsletterWebhook, der Aufruf erfolgt im NewsletterHandler der das HandlerInterface (supports, handle) implementiert, ist der Event gültig (supports), wird handle() mit NewsletterWebhookFactory ein neuer NewsletterWebhook created
 - WebhookException erstellt, für eigene Fehlerbehandlung
+- ForwarderInterface erstellt (supports, forward), prüft auf gültige Events die dann bspw. ans Kundensystem (CDP) weitergeleitet werden
+- PHPStan hatte angekreidet das für #[AutowireIterator] die /** @param */ fehlten
