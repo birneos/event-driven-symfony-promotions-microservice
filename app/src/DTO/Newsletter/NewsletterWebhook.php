@@ -1,4 +1,6 @@
-<?php // src/DTO/Newsletter/NewsletterWebhook.php
+<?php
+
+// src/DTO/Newsletter/NewsletterWebhook.php
 
 declare(strict_types=1);
 

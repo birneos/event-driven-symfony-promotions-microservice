@@ -1,6 +1,8 @@
-<?php // src/DTO/User/User.php
+<?php
 
-declare(strict_types = 1);
+// src/DTO/User/User.php
+
+declare(strict_types=1);
 
 namespace App\DTO\User;
 

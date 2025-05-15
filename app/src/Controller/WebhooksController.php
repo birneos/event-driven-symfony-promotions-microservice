@@ -35,7 +35,7 @@ class WebhooksController extends AbstractController
             $webhook->setRawPayload(json_decode($request->getContent(), true));
 
             $this->handlerDelegator->delegate($webhook);
-           
+
 
             return new Response(status: 204);
         } catch (\Throwable $exception) {

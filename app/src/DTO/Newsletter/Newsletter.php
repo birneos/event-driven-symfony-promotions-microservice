@@ -1,4 +1,6 @@
-<?php // src/DTO/Newsletter/Newsletter.php
+<?php
+
+// src/DTO/Newsletter/Newsletter.php
 
 declare(strict_types=1);
 
