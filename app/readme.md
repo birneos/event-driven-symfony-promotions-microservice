@@ -50,6 +50,17 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
      ```
 
 - FakeCdpClient.php, ein Testclient mit dem wir Anfragen simulieren
+- FakeCdpClient in service.yaml registriert, damit der Container ihn finden kann, der er im Test-Ordner und somit ausserhalb von src-Ordner liegt
+
+- PhpUnit Test, WebhooksControllerTest ist mit WebTestCase extended und kann somit auf den Container zugreifen, damit laden wir den den Container und das CdpClientInterface, welches in Testumgebung automatisch den FakeCdpClient lädt...cool oder
+    ```
+      $this->container = $this->webTester-    >getContainer();
+      $this->cdpClient = $this->container->get(CdpClientInterface::class);
+    
+  ```
+
+
+
  
 
 
