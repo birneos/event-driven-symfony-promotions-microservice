@@ -41,7 +41,7 @@ class SubscriptionStartForwarder implements NewsletterForwarderInterface
 
         (new SubscriptionStartMapper())->map($webhook, $identifyModel);
 
-        dd($identifyModel);
+        // dd($identifyModel);
 
         // 3.  Validate the model
 

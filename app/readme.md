@@ -60,8 +60,8 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
   ```
 
 
-
- 
+- PHPUnit Integrations Test, SubscriptionStartForwarder sendet identifyModel Daten per CdpClient, wir prüfen Aufruf und Daten
+  ```  docker compose exec app vendor/bin/phpunit ```
 
 
   Zwischendurch mal Codeoptimierungen machen:
