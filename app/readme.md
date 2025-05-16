@@ -63,6 +63,8 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 - PHPUnit Integrations Test, SubscriptionStartForwarder sendet identifyModel Daten per CdpClient, wir prüfen Aufruf und Daten
   ```  docker compose exec app vendor/bin/phpunit ```
 
+- InditifyModel um Asserts ergänzt (NotBlank,etc) und einen ModelValidator erstellt mit dem 
+die Models auf Constraints geprüft werden können
 
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
