@@ -31,3 +31,7 @@ services:
             tags: [ 'webhook.handler' ]
         App\Forwarder\Newsletter\ForwarderInterface:
             tags: [ 'forwarder.newsletter' ]
+
+
+    # Services which will be doubled for tests, better to use the test environment as multiple requests to the Frontend
+    App\CDP\Http\CdpClientInterface: '@App\CDP\Http\CdpClient'

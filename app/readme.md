@@ -38,6 +38,20 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 
 - CdpClient erhält ein CdpClientInterface mit 2 Methoden track und identify
 
+- Testumgebung für isolierte korrekte Vearbeitung schaffen:
+  - Unit-Tests könnte zeigen das alle Einzelteile funktionieren, aber Gewissheit gibt es nicht
+  - Anfragen an den Dienst richten und dann im Verwaltungsbereich der Kundenplattform nachsehen, ist ist das eine Praxis in der Entwicklung?
+  - Wir sollten in der Lage sein, zu testen, ob unser Dienst isoliert korrekt funktioniert, ohne die Dienste mit denen er interagiert prüfen zu müssen
+
+   - Dazu erzeugen wir einen benutzerdefinierten CdpClient, registrieren das Interface als Alias (service.yaml)
+     ```
+     # Services which will be doubled for tests, better to use the test environment as multiple requests to the Frontend
+    App\CDP\Http\CdpClientInterface: '@App\CDP\Http\CdpClient'
+     ```
+
+- FakeCdpClient.php, ein Testclient mit dem wir Anfragen simulieren
+ 
+
 
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
