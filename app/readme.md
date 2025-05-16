@@ -34,7 +34,7 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
   dann die Daten weiter - Model erstellen und validieren, bevor wir es weiterleiten
 - Identify Model Object erstellt und ModelInterface um die Konstanten Identify und Track ergänzt, Model wird dazu genutzt um das NewsletterWebhook zu füllen
 
-- SubscriptionStartMapperr mit dem wir das Identify-Model auf das NewsletterWebhook mappen können (aufruf im SubscriptionStartForwarder), damit auch andere Objekte gemappt werden könne, erstellen wir ein SubscriptionSourceInterface, welches vom NewsletterWebhook implements wird.
+- SubscriptionStartMapperr mit dem wir das Identify-Model auf das NewsletterWebhook mappen können (aufruf im SubscriptionStartForwarder), damit auch andere Objekte gemappt werden könne, erstellen wir ein SubscriptionSourceInterface, welches vom NewsletterWebhook implements wird, damit die Methoden (getProduct,getEventDate...) im NewsletterWebhook aufgerufen werden können, um das Object zu befüllen
 
 - CdpClient erhält ein CdpClientInterface mit 2 Methoden track und identify
 
