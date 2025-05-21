@@ -22,12 +22,12 @@ class ModelValidator
             $failingProperties = [];
 
             foreach ($violations as $violation) {
-                $failingProperties[] = $violation->getPropertyPath() . ': ' . $violation->getMessage();
+                $failingProperties[] = $violation->getPropertyPath();
             }
 
             $reflectionClass = new \ReflectionClass($model);
 
-            throw new WebhookException('Invalid ' . $reflectionClass->getShortName() . ': ' . implode(', ', $failingProperties));
+            throw new WebhookException('Invalid ' . $reflectionClass->getShortName() . ' properties: ' . implode(', ', $failingProperties));
         }
         // If there are no errors, the model is valid
     }
