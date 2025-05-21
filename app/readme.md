@@ -66,6 +66,8 @@ in notwendige schöne Daten für das Kundensystem (CDP) bereitzustellen.
 - InditifyModel um Asserts ergänzt (NotBlank,etc) und einen ModelValidator erstellt mit dem 
 die Models auf Constraints geprüft werden können
 
+- ModelValidator (Validator) und ModelValidatorTest (PHPUnit Test auf valides und invalides Model)
+
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
   docker compose exec app vendor/bin/phpcbf 
