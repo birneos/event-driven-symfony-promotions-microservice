@@ -68,6 +68,9 @@ die Models auf Constraints geprüft werden können
 
 - ModelValidator (Validator) und ModelValidatorTest (PHPUnit Test auf valides und invalides Model)
 
+- ModelValidator nach Test nun im Projekt eingesetzt im SubscriptionStartForwarder der das Model nun validiert und wenn keine Exception geworfen wird, eine Identify Anfrage per CdpClient absetzt
+
+
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
   docker compose exec app vendor/bin/phpcbf 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Forwarder\Identify;
 
+use App\CDP\Analytics\Model\ModelValidator;
 use App\CDP\Analytics\Model\Subscription\Identify\IdentifyModel;
 use App\CDP\Analytics\Model\Subscription\Identify\SubscriptionStartMapper;
 use App\CDP\Http\CdpClientInterface;
@@ -15,7 +16,8 @@ class SubscriptionStartForwarder implements NewsletterForwarderInterface
     private const SUPPORTED_EVENT = 'newsletter_subscribed';
 
     public function __construct(
-        private readonly CdpClientInterface $cdpClient
+        private readonly CdpClientInterface $cdpClient,
+        private readonly ModelValidator $modelValidator,
     ) {
     }
 
@@ -44,6 +46,7 @@ class SubscriptionStartForwarder implements NewsletterForwarderInterface
         // dd($identifyModel);
 
         // 3.  Validate the model
+        $this->modelValidator->validate($identifyModel);
 
         // 4.  Use the CDP client to POST the data to the CDP
         $this->cdpClient->identify($identifyModel);

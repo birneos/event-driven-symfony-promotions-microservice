@@ -29,7 +29,7 @@ class ModelValidatorTest extends TestCase
     }
 
     /**
-     * @Description("Wir testen ein invalides Modell, das nicht validiert werden kann und eine Exception auslöst")   
+     * @Description("Wir testen ein invalides Modell, das nicht validiert werden kann und eine Exception auslöst")
      */
     public function testInvalidIdentifyModelFailsValidation(): void
     {
@@ -54,7 +54,7 @@ class ModelValidatorTest extends TestCase
     }
 
     /**
-     * @Description("Alle Attribute sind gültig und wir erwarten, dass die Validierung wird erfolgreich durchgeführt wird")   
+     * @Description("Alle Attribute sind gültig und wir erwarten, dass die Validierung wird erfolgreich durchgeführt wird")
      */
     public function testValidIdentifyModelPassesValidation(): void
     {
