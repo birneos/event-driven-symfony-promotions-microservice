@@ -71,6 +71,10 @@ die Models auf Constraints geprüft werden können
 - ModelValidator nach Test nun im Projekt eingesetzt im SubscriptionStartForwarder der das Model nun validiert und wenn keine Exception geworfen wird, eine Identify Anfrage per CdpClient absetzt
 
 
+- Jetzt benötigen eine Forwarder für eine Track Weiterleitung
+
+
+
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
   docker compose exec app vendor/bin/phpcbf 

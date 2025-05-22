@@ -72,5 +72,4 @@ class ModelValidatorTest extends TestCase
             $this->fail('Unexpected exception thrown');
         }
     }
-
 }
