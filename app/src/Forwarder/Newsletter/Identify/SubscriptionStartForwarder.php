@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Forwarder\Identify;
+namespace App\Forwarder\Newsletter\Identify;
 
 use App\CDP\Analytics\Model\ModelValidator;
 use App\CDP\Analytics\Model\Subscription\Identify\IdentifyModel;
