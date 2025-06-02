@@ -73,6 +73,11 @@ die Models auf Constraints geprüft werden können
 
 - Jetzt benötigen eine Forwarder für eine Track Weiterleitung
 
+- SubscritionFowarder erstellt, Track Model erstellt mit Validation Asserts (Not Blank etc, Regex)
+- SubscritionMapper und SubscriptionSourceInterface erstellt, der das übergebene Webhook auf das Track Model mappt
+- NewsletterWebhook implementiert das SubscriptionSourceInterface, nutze DateInterval um Subscription Standardmässig um 1 Jahr zu verlängern
+- WebhooksControllerTest (PHPUnit Test) erweitert um den Track-Daten Test
+
 
 
   Zwischendurch mal Codeoptimierungen machen:

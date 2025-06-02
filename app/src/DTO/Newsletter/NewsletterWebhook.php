@@ -8,6 +8,7 @@ namespace App\DTO\Newsletter;
 
 use App\CDP\Analytics\Model\Subscription\Identify\SubscriptionSourceInterface;
 use App\DTO\User\User;
+use DateInterval;
 use DateTimeImmutable;
 
 class NewsletterWebhook implements SubscriptionSourceInterface
@@ -79,40 +80,78 @@ class NewsletterWebhook implements SubscriptionSourceInterface
         $this->newsletter = $newsletter;
     }
 
-    /**
-     *  Methods of SubscriptionSourceInterface
-     */
-
     public function getProduct(): string
     {
-        // Implement the logic to return the product
-       // newsletter.product_id
+        // newsletter.product_id
         return $this->newsletter->getProductId();
     }
 
     public function getEventDate(): string
     {
-        // Implement the logic to return the event date
-       // timestamp
+        // timestamp
         return $this->timestamp->format('Y-m-d');
     }
 
     public function getSubscriptionId(): string
     {
-        // Implement the logic to return the subscription ID
+        // id
         return $this->id;
     }
 
     public function getEmail(): string
     {
-        // Implement the logic to return the user's email
+        // user.email
         return $this->user->getEmail();
     }
 
     public function getUserId(): string
     {
-        // Implement the logic to return the user ID
-        // // user.client_id
+        // user.client_id
         return $this->user->getClientId();
+    }
+
+    public function requiresConsent(): bool
+    {
+        return in_array($this->user->getRegion(), self::CONSENT_REGIONS);
+    }
+
+    public function getPlatform(): string
+    {
+        return 'web';
+    }
+
+    public function getProductName(): string
+    {
+        return $this->newsletter->getNewsletterId();
+    }
+
+    public function getRenewalDate(): string
+    {
+        $date = $this->timestamp;
+
+        $interval = new DateInterval('P1Y');
+
+        return $date->add($interval)->format('Y-m-d');
+    }
+
+    public function getStartDate(): string
+    {
+        return $this->timestamp->format('Y-m-d');
+    }
+
+    public function getType(): string
+    {
+        return 'newsletter';
+    }
+
+    public function getStatus(): string
+    {
+        $status = 'subscribed';
+
+        if ($this->event === 'newsletter_unsubscribed') {
+            $status = 'unsubscribed';
+        }
+
+        return $status;
     }
 }
