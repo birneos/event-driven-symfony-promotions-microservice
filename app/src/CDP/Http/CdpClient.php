@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace App\CDP\Http;
 
 use App\CDP\Analytics\Model\ModelInterface;
+use App\Error\WebhookException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -19,19 +20,26 @@ class CdpClient
 
     public function track(ModelInterface $model): void
     {
-        $this->httpClient->request('POST', self::CDP_API_URL . '/track', [
+        $response = $this->httpClient->request('POST', self::CDP_API_URL . '/track', [
                 'body' => json_encode($model->toArray(), JSON_THROW_ON_ERROR),
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'API-KEY' => $this->apiKey,
                 ]
             ]);
-// Add error handling
+
+
+        try {
+            $response->toArray();
+        } catch (\Throwable $e) {
+            // Handle the exception, e.g., log it or rethrow it
+            throw new WebhookException(message: $response->getContent(false), previous: $e);
+        }
     }
 
     public function identify(ModelInterface $model): void
     {
-        $this->httpClient->request('POST', self::CDP_API_URL . '/identify', [
+        $response = $this->httpClient->request('POST', self::CDP_API_URL . '/identify', [
                 'body' => json_encode($model->toArray(), JSON_THROW_ON_ERROR),
                 'headers' => [
                     'Content-Type' => 'application/json',
@@ -39,6 +47,11 @@ class CdpClient
                 ]
             ]);
 
-        // Add error handling
+            try {
+                $response->toArray();
+            } catch (\Throwable $e) {
+                // Handle the exception, e.g., log it or rethrow it
+                throw new WebhookException(message:  $response->getContent(false), previous: $e);
+            }
     }
 }

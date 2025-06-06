@@ -84,6 +84,11 @@ eindeutigen Profil zu verknüpfen.
 - PHPUnit Test für ArrayFilter Test erstellt
 - PHPUnit Test der WebhooksControllerTest mit TrackModel Daten getestet (Vorgabe: Array ohne Null Werte)
 
+- Fehlerbehandlung für CDPClient Anfragen
+- PHPUnit Test für den CDPClient, definiere Mock Response (400er und Fehlermeldung), die an MockClient übergeben wird und dann an den CDPClient, erwartet wird eine Exception (positiver Test) ansonsten Meldung das der Test fehlgeschlagen ist
+
+
+
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
   docker compose exec app vendor/bin/phpcbf
