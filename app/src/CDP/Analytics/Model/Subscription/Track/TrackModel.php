@@ -178,7 +178,7 @@ class TrackModel implements ModelInterface
         ];
 
         ArrayFilter::removeEmptyKeysRecursively($model);
-        
+
         return $model;
     }
 }

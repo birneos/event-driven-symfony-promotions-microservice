@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -22,20 +22,13 @@ class CdpClientTest extends \PHPUnit\Framework\TestCase
         $unit = new CdpClient($mockHttpClient, 'fake-api-key');
 
         try {
-
             $mockTrackModel = $this->createMock(ModelInterface::class);
 
             $unit->track($mockTrackModel);
 
             $this->fail('A WebhookException should have been thrown');
-
-
-        }catch ( WebhookException $e) {
-         
+        } catch (WebhookException $e) {
             $this->assertStringContainsString('{"grave":"error"}', $e->getMessage());
         }
-      
-        
-        
     }
 }

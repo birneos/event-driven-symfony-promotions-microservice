@@ -72,7 +72,7 @@ class WebhooksControllerTest extends WebTestCase
         // Assert CdpClient::track() called once
         $this->assertSame(1, $this->cdpClient->getTrackCallCount());
 
-        // Assert correct TrackModel is passed to CdpClient::track() method 
+        // Assert correct TrackModel is passed to CdpClient::track() method
         $trackModel = $this->cdpClient->getTrackModel();
         $this->assertInstanceOf(TrackModel::class, $trackModel);
 

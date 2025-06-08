@@ -47,11 +47,11 @@ class CdpClient
                 ]
             ]);
 
-            try {
-                $response->toArray();
-            } catch (\Throwable $e) {
-                // Handle the exception, e.g., log it or rethrow it
-                throw new WebhookException(message:  $response->getContent(false), previous: $e);
-            }
+        try {
+            $response->toArray();
+        } catch (\Throwable $e) {
+            // Handle the exception, e.g., log it or rethrow it
+            throw new WebhookException(message:  $response->getContent(false), previous: $e);
+        }
     }
 }

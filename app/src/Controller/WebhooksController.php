@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use App\DTO\Webhook;
 use App\Error\ErrorHandlerInterface;
-use Error;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
