@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\Webhook;
+use App\Error\ErrorHandlerInterface;
+use Error;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +18,7 @@ class WebhooksController extends AbstractController
     public function __construct(
         private readonly SerializerInterface $serializer,
         private readonly \App\Handler\HandlerDelegator $handlerDelegator,
+        private readonly ErrorHandlerInterface $errorHandler,
     ) {
     }
 
@@ -42,7 +45,9 @@ class WebhooksController extends AbstractController
 
             return new Response(status: 204);
         } catch (\Throwable $exception) {
-            throw $exception;
+            $this->errorHandler->handle($exception);
+
+            return new Response(status: 400);
         }
     }
 }

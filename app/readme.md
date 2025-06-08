@@ -87,6 +87,7 @@ eindeutigen Profil zu verknüpfen.
 - Fehlerbehandlung für CDPClient Anfragen
 - PHPUnit Test für den CDPClient, definiere Mock Response (400er und Fehlermeldung), die an MockClient übergeben wird und dann an den CDPClient, erwartet wird eine Exception (positiver Test) ansonsten Meldung das der Test fehlgeschlagen ist
 
+- ErrorHandling zentralisiert, danach können wir die Fehler je nach Umgebung (dev,test,production) auswerten
 
 
   Zwischendurch mal Codeoptimierungen machen:
