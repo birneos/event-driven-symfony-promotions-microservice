@@ -35,9 +35,14 @@ services:
 
     # Services which will be doubled for tests, better to use the test environment as multiple requests to the Frontend
     App\CDP\Http\CdpClientInterface: '@App\CDP\Http\CdpClient'
+    App\Error\ErrorHandlerInterface: '@App\Error\ErrorHandler'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+when@dev:
+    services:
+        App\Error\ErrorHandlerInterface: '@App\Error\DebugErrorHandler'
 
     # Wir teilen dem Container mit explizit wo der FakeCdpClient zu finden ist, da
     # der Test-Ordner nicht im src-Ordner liegt und vom Container nicht automatisch gefunden werden kann.
@@ -47,3 +52,7 @@ when@test:
     services:
         App\Tests\TestDoubles\CDP\Http\FakeCdpClient: ~
         App\CDP\Http\CdpClientInterface: '@App\Tests\TestDoubles\CDP\Http\FakeCdpClient'
+
+        # tilde (~) is a shortcut for an empty service definition, no constructor arguments, the container will create an instance of the class automatically.
+        App\Tests\TestDoubles\Error\FakeErrorHandler: ~
+        App\Error\ErrorHandlerInterface: '@App\Tests\TestDoubles\Error\FakeErrorHandler'

@@ -89,6 +89,9 @@ eindeutigen Profil zu verknüpfen.
 
 - ErrorHandling zentralisiert, danach können wir die Fehler je nach Umgebung (dev,test,production) auswerten
 
+- DebugErrorHandler (für Prod + Development) und FakeErrorHandler (Tests) erstellt
+  - Service registriert in service.yaml für prod, dev und tests
+
 
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
