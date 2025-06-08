@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\TestDoubles;
+namespace App\Tests\TestDoubles\Error;
 
 use App\Error\ErrorHandlerInterface;
 use Throwable;

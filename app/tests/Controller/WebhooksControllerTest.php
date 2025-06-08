@@ -36,15 +36,17 @@ class WebhooksControllerTest extends WebTestCase
          /** @phpcs:enable */
 
         // Simulate incoming webhook request
-        $this->webTester->request(
-            method: 'POST',
-            uri: '/webhook',
-            server: [
-              'CONTENT_TYPE' => 'application/json',
-              'HTTP_ACCEPT' => '*/*',
-            ],
-            content: $incomingWebhookPayload
-        );
+        $this->postJson($incomingWebhookPayload);
+
+        // $this->webTester->request(
+        //     method: 'POST',
+        //     uri: '/webhook',
+        //     server: [
+        //       'CONTENT_TYPE' => 'application/json',
+        //       'HTTP_ACCEPT' => '*/*',
+        //     ],
+        //     content: $incomingWebhookPayload
+        // );
 
         // Assert CdpClient::identify() called once
         $this->assertSame(1, $this->cdpClient->getIdentifyCallCount());
@@ -105,5 +107,19 @@ class WebhooksControllerTest extends WebTestCase
         ], $trackModel->toArray());
 
         $this->assertSame(Response::HTTP_NO_CONTENT, $this->webTester->getResponse()->getStatusCode());
+    }
+
+    public function postJson(string $payload): void{
+
+        $this->webTester->request(
+            method: 'POST',
+            uri: '/webhook',
+            server: [
+              'CONTENT_TYPE' => 'application/json',
+              'HTTP_ACCEPT' => '*/*',
+            ],
+            content: $payload
+        );
+
     }
 }
