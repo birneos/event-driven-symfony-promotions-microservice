@@ -90,7 +90,8 @@ eindeutigen Profil zu verknüpfen.
 - ErrorHandling zentralisiert, danach können wir die Fehler je nach Umgebung (dev,test,production) auswerten
 
 - DebugErrorHandler (für Prod + Development) und FakeErrorHandler (Tests) erstellt
-  - Service registriert in service.yaml für prod, dev und tests
+  - Service registriert in service.yaml für prod, dev und tests - DebugErrorHandler soll aufgerufen werden bei (prod+dev) und der 
+    FakeErrorHandler wenn tests durchgeführt werden
 
 
   Zwischendurch mal Codeoptimierungen machen:
