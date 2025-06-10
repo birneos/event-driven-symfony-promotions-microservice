@@ -13,14 +13,18 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class CdpClient
 {
-    private const CDP_API_URL = 'https://some-cdp-api.com';
-    public function __construct(private HttpClientInterface $httpClient, #[Autowire('%cdp.api_key%')] private string $apiKey)
+  
+    public function __construct(
+        private HttpClientInterface $httpClient,
+         #[Autowire('%cdp.api_key%')] private string $apiKey,
+         #[Autowire('%env(CDP_API_URL)%')] private readonly string $cdpurl,
+         )
     {
     }
 
     public function track(ModelInterface $model): void
     {
-        $response = $this->httpClient->request('POST', self::CDP_API_URL . '/track', [
+        $response = $this->httpClient->request('POST', $this->cdpurl . '/track', [
                 'body' => json_encode($model->toArray(), JSON_THROW_ON_ERROR),
                 'headers' => [
                     'Content-Type' => 'application/json',
@@ -39,7 +43,7 @@ class CdpClient
 
     public function identify(ModelInterface $model): void
     {
-        $response = $this->httpClient->request('POST', self::CDP_API_URL . '/identify', [
+        $response = $this->httpClient->request('POST', $this->cdpurl . '/identify', [
                 'body' => json_encode($model->toArray(), JSON_THROW_ON_ERROR),
                 'headers' => [
                     'Content-Type' => 'application/json',

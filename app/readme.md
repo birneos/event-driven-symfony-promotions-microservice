@@ -95,6 +95,12 @@ eindeutigen Profil zu verknüpfen.
 
 - PHPUnit Tests erstellt, Beispiel wenn Mappingfehler auftritt und ein Beispiel beim dem Versuch das IndifyModel zu validieren
 
+- Mocky.io, hier kann man Mockdaten hinterlegen um Server anfragen zu simulieren, wenn wir von ausserhalb Daten (als Demo CDP bsw)
+  an unsere API senden wollen, um zu sehen wie sich unser System verhält, Fehlerbehandlung und Valdierung und Code evtl. noch
+  einmal nachbessern müssen
+
+- CDP_API_URL in den .env, .env.dev, .env.test hinterlegt und mit Autowire importiert
+  (Normalerweise werden .env Dateien nicht ins git Repo aufgenommen, hier ist es in Ordnung zu Demonstrationszwecken)
 
 
   Zwischendurch mal Codeoptimierungen machen:
