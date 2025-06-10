@@ -42,11 +42,13 @@ class WebhooksController extends AbstractController
 
             $this->handlerDelegator->delegate($webhook);
 
-            return new Response(status: 204);
+            return new Response(status: Response::HTTP_NO_CONTENT);
+
         } catch (\Throwable $exception) {
+            
             $this->errorHandler->handle($exception);
 
-            return new Response(status: 400);
+            return new Response(status: Response::HTTP_BAD_REQUEST);
         }
     }
 }

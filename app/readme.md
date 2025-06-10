@@ -93,6 +93,9 @@ eindeutigen Profil zu verknüpfen.
   - Service registriert in service.yaml für prod, dev und tests - DebugErrorHandler soll aufgerufen werden bei (prod+dev) und der 
     FakeErrorHandler wenn tests durchgeführt werden
 
+- PHPUnit Tests erstellt, Beispiel wenn Mappingfehler auftritt und ein Beispiel beim dem Versuch das IndifyModel zu validieren
+
+
 
   Zwischendurch mal Codeoptimierungen machen:
   docker compose exec app vendor/bin/phpstan
